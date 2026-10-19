@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexMech — 3D Scanning, 3D Printing, Reverse Engineering, R&D & CAD Academy</title>
+    
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        cardHover: '#161d2b',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Professional Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden">
+
+    <!-- Engineering HUD Telemetry Bar -->
+    <div class="bg-blue-950/80 border-b border-blue-500/20 text-blue-300 text-[11px] font-mono py-1.5 px-6 fixed top-0 left-0 right-0 z-50 flex justify-between items-center backdrop-blur-md">
+        <div class="flex items-center space-x-4">
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>METROLOGY LAB ACTIVE</span>
+            <span class="hidden sm:inline text-slate-400">| ACCURACY: ±0.010 mm</span>
+            <span class="hidden md:inline text-slate-400">| ISO 9001 & ASME Y14.5</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <span id="hud-coords">X: 0.000 Y: 0.000 Z: 0.000</span>
+            <span class="text-cyan-400 font-semibold tracking-wide hidden lg:inline">ONLINE QUOTE SYSTEM READY</span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation Bar -->
+    <header class="fixed top-[35px] left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- Company Brand Identity -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold group-hover:scale-105 transition shadow-[0_0_15px_rgba(0,102,255,0.4)]">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1 font-heading">
+                        APEX<span class="text-blue-500">MECH</span>
+                    </span>
+                    <span class="text-[9px] uppercase tracking-widest text-slate-400 font-mono">Engineering & CAD Academy</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#services" class="hover:text-blue-400 transition">Core Services</a>
+                <a href="#scanning" class="hover:text-blue-400 transition">3D Scan & Metrology</a>
+                <a href="#printing" class="hover:text-blue-400 transition">3D Printing</a>
+                <a href="#rnd" class="hover:text-blue-400 transition">R&D & Engineering</a>
+                <a href="#academy" class="text-cyan-400 font-semibold hover:text-cyan-300 transition flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span> CAD Academy
+                </a>
+                <a href="#batches" class="hover:text-blue-400 transition">Batches</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#inquiry" class="px-5 py-2.5 text-xs font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition shadow-lg shadow-blue-600/30 hover:scale-105 duration-200">
+                    Get Instant Quote
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="menu-btn" class="lg:hidden text-slate-300 hover:text-white p-2 rounded-lg bg-slate-900 border border-slate-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-cardDark border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#services" class="block text-slate-300 hover:text-white py-1.5">Services Overview</a>
+            <a href="#scanning" class="block text-slate-300 hover:text-white py-1.5">3D Scanning & Reverse Engineering</a>
+            <a href="#printing" class="block text-slate-300 hover:text-white py-1.5">3D Printing Prototyping</a>
+            <a href="#rnd" class="block text-slate-300 hover:text-white py-1.5">R&D: Concept to Reality</a>
+            <a href="#academy" class="block text-cyan-400 font-semibold py-1.5">CAD Training Academy</a>
+            <a href="#batches" class="block text-slate-300 hover:text-white py-1.5">Batch Schedules</a>
+            <div class="pt-4">
+                <a href="#inquiry" class="block text-center w-full py-3 rounded-xl bg-blue-600 text-white font-semibold">Start Project / Enroll</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-44 pb-24 md:pt-56 md:pb-32 overflow-hidden flex items-center justify-center min-h-[92vh]">
+        <canvas id="particle-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+        <div class="absolute inset-0 bg-radial-gradient pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-blue-500/40 bg-blue-600/10 text-cyan-300 text-xs font-semibold mb-6 tracking-wide backdrop-blur-md shadow-[0_0_20px_rgba(0,102,255,0.25)]">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>Complete Mechanical Solutions &bull; Concept to Manufactured Reality</span>
+            </div>
+
+            <!-- Wireframe Cube Visualizer -->
+            <div class="mb-10 relative">
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="w-40 h-40 rounded-full border border-blue-400/20 border-dashed reticle-spin"></div>
+                </div>
+                <div class="scene">
+                    <div class="cube">
+                        <div class="cube-face face-1">SCAN</div>
+                        <div class="cube-face face-2">CAD</div>
+                        <div class="cube-face face-3">PRINT</div>
+                        <div class="cube-face face-4">R&D</div>
+                        <div class="cube-face face-5">BUILD</div>
+                        <div class="cube-face face-6">TEST</div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-tight mb-6 font-heading text-white">
+                From Physical Idea to <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">Digital Precision</span> and Production.
+            </h1>
+            
+            <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                Delivering high-accuracy 3D scanning, precision rapid 3D printing, advanced reverse engineering, product R&D, and industry-certified CAD training on SolidWorks, CATIA, NX & Creo.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#inquiry" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition shadow-xl shadow-blue-600/40 text-center hover:scale-105 duration-200">
+                    Request Project Estimate
+                </a>
+                <a href="#academy" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-blue-500/40 bg-cardDark/80 text-cyan-300 font-semibold hover:bg-blue-600/20 hover:text-white transition text-center backdrop-blur-sm hover:scale-105 duration-200 shadow-[0_0_20px_rgba(0,102,255,0.15)]">
+                    Explore CAD Academy Courses
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics Counter Section -->
+    <section class="py-16 border-t border-b border-slate-800 bg-cardDark/50 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center font-mono">
+            <div>
+                <p class="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-1" data-target="500">0</p>
+                <p class="text-xs md:text-sm text-slate-400 uppercase tracking-wider font-sans">Parts Scanned & Reversed</p>
+            </div>
+            <div>
+                <p class="text-4xl md:text-5xl font-extrabold text-blue-400 mb-1" data-target="1500">0</p>
+                <p class="text-xs md:text-sm text-slate-400 uppercase tracking-wider font-sans">3D Prototypes Printed</p>
+            </div>
+            <div>
+                <p class="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-1" data-target="1200">0</p>
+                <p class="text-xs md:text-sm text-slate-400 uppercase tracking-wider font-sans">Engineers CAD Trained</p>
+            </div>
+            <div>
+                <p class="text-4xl md:text-5xl font-extrabold text-blue-400 mb-1" data-target="99">0</p>
+                <p class="text-xs md:text-sm text-slate-400 uppercase tracking-wider font-sans">% Metrology Accuracy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Grid (3D Scan, 3D Print, Reverse Eng, R&D) -->
+    <section id="services" class="py-28 bg-dark relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2 block font-mono">Specialized Engineering Services</span>
+                <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4 font-heading text-white">Full-Spectrum Mechanical Capabilities</h2>
+                <p class="text-slate-400 text-sm sm:text-base">We bridge the physical and digital engineering workflows through industrial metrology, additive prototyping, and parametric product design.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. 3D Scanning -->
+                <div id="scanning" class="tilt-card p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/80 transition duration-300 group shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-600/10 border border-blue-500/40 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition duration-300 text-2xl">
+                            📡
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white font-heading">High-Resolution 3D Scanning</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Structured-light and optical laser 3D scanning capturing micron-level accuracy. Perfect for complex freeform castings, legacy tooling, and automotive body panels.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6 font-mono">
+                            <li>&bull; Non-destructive laser digitizing</li>
+                            <li>&bull; STL/OBJ high-density point clouds</li>
+                            <li>&bull; Color deviation inspection reports</li>
+                        </ul>
+                    </div>
+                    <div class="scanner-preview">
+                        <div class="laser-beam"></div>
+                        <span class="text-[10px] font-mono text-cyan-300 tracking-wider">OPTICAL SCAN: ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- 2. 3D Printing & Additive Manufacturing -->
+                <div id="printing" class="tilt-card p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/80 transition duration-300 group shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-600/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-600 group-hover:text-white transition duration-300 text-2xl">
+                            🖨️
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white font-heading">Industrial 3D Printing</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Rapid prototyping and end-use part manufacturing using FDM, SLA resin, and SLS nylon. Validate mechanical fit and kinematic action within 24 hours.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6 font-mono">
+                            <li>&bull; Materials: PLA, ABS, PETG, Nylon, Resin</li>
+                            <li>&bull; Functional snap-fit & stress testing</li>
+                            <li>&bull; Low-volume custom production runs</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center text-xs font-mono text-slate-300">
+                        <span>Tolerance:</span>
+                        <span class="text-cyan-400">&plusmn; 0.1 mm precision</span>
+                    </div>
+                </div>
+
+                <!-- 3. Reverse Engineering -->
+                <div class="tilt-card p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/80 transition duration-300 group shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-600/10 border border-indigo-500/40 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition duration-300 text-2xl">
+                            ⚙️
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white font-heading">Reverse Engineering</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Convert raw scan point clouds into fully editable, parametric 3D CAD models (STEP/IGES/Native SolidWorks). Reconstruct worn gears, broken housings, and obsolete parts.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6 font-mono">
+                            <li>&bull; Parametric feature tree regeneration</li>
+                            <li>&bull; DFM (Design for Manufacturing) review</li>
+                            <li>&bull; Production-ready 2D machining drawings</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center text-xs font-mono text-slate-300">
+                        <span>Output Format:</span>
+                        <span class="text-blue-400">STEP, IGES, SLDPRT, DWG</span>
+                    </div>
+                </div>
+
+                <!-- 4. R&D: Concept into Reality -->
+                <div id="rnd" class="tilt-card p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/80 transition duration-300 group shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-600/10 border border-blue-500/40 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition duration-300 text-2xl">
+                            💡
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white font-heading">R&D: Concept to Reality</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Turn napkin sketches and raw concepts into validated hardware. We handle mechanism calculation, finite element simulation, pilot prototyping, and tooling coordination.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6 font-mono">
+                            <li>&bull; Feasibility & structural analysis (FEA)</li>
+                            <li>&bull; Custom mechanism kinematic design</li>
+                            <li>&bull; Vendor & fabrication supervision</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center text-xs font-mono text-slate-300">
+                        <span>Workflow:</span>
+                        <span class="text-cyan-400">Idea &rarr; CAD &rarr; Sim &rarr; Build</span>
+                    </div>
+                </div>
+
+                <!-- 5. Dairy & Pharma Automation -->
+                <div class="tilt-card p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/80 transition duration-300 group shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-600/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-600 group-hover:text-white transition duration-300 text-2xl">
+                            🥛
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white font-heading">Sanitary Plant Machinery</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Design of high-speed filling equipment, rotary capping stations, aseptic accumulators, and Clean-in-Place (CIP) conveyors for food and pharmaceutical plants.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6 font-mono">
+                            <li>&bull; SS304 & SS316 food-grade standards</li>
+                            <li>&bull; Zero-spill pneumatic anti-drip valves</li>
+                            <li>&bull; Synchronized slat-chain layouts</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center text-xs font-mono text-slate-300">
+                        <span>Standard:</span>
+                        <span class="text-blue-400">GMP & Sanitary FDA Guidelines</span>
+                    </div>
+                </div>
+
+                <!-- 6. GD&T & Production Blueprinting -->
+                <div class="tilt-card p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/80 transition duration-300 group shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-600/10 border border-indigo-500/40 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition duration-300 text-2xl">
+                            📐
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white font-heading">Metrology & Drafting Standards</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Production drawings engineered under strict ASME Y14.5 and ISO 1101 standards with datum reference frames, fit calculations (H7/g6), and complete BOM structures.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6 font-mono">
+                            <li>&bull; Datum feature reference frames</li>
+                            <li>&bull; Geometric tolerancing (runout, parallelism)</li>
+                            <li>&bull; Automated multi-sheet assembly drawings</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center text-xs font-mono text-slate-300">
+                        <span>Compliance:</span>
+                        <span class="text-cyan-400">ASME Y14.5M & ISO 7200</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Scan-to-CAD Inspector Simulator -->
+    <section class="py-24 bg-cardDark/40 border-t border-b border-slate-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2 block font-mono">Inspection Studio</span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4 font-heading text-white">Live Scan-to-CAD Inspection Stage</h2>
+                <p class="text-slate-400 text-sm">Switch inspection viewports below to simulate point-cloud scanning, parametric solid generation, and metrology deviation analysis.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto p-8 rounded-3xl bg-dark border border-blue-500/40 shadow-2xl">
+                <div id="inspector-display" class="w-full h-80 rounded-2xl border border-blue-500/20 relative flex items-center justify-center overflow-hidden bg-slate-950">
+                    <div class="absolute inset-0 bg-cad-grid opacity-30"></div>
+                    <div class="text-center z-10 px-6">
+                        <div id="inspector-icon" class="w-20 h-20 mx-auto mb-4 border border-cyan-400 border-dashed rounded-full flex items-center justify-center text-cyan-300 text-3xl animate-spin">
+                            📡
+                        </div>
+                        <h4 id="inspector-title" class="text-white font-bold text-xl font-heading">Raw STL Mesh Point Cloud</h4>
+                        <p id="inspector-desc" class="text-xs text-cyan-400 font-mono mt-2">1,240,000 Triangles Captured &bull; Structured Laser Scanner</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4 mt-6 flex-wrap">
+                    <button onclick="setInspectorMode('mesh')" id="btn-mesh" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 text-white transition shadow-md">1. Scan Mesh (STL)</button>
+                    <button onclick="setInspectorMode('cad')" id="btn-cad" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-cardDark border border-slate-800 text-slate-300 hover:border-blue-400 transition">2. Parametric CAD (STEP)</button>
+                    <button onclick="setInspectorMode('deviation')" id="btn-deviation" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-cardDark border border-slate-800 text-slate-300 hover:border-blue-400 transition">3. Metrology Deviation Map</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicated CAD Training Academy Section -->
+    <section id="academy" class="py-28 bg-dark relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2 block font-mono">Professional Training</span>
+                <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4 font-heading text-white">ApexMech CAD Academy</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Industry-oriented training taught by senior mechanical design engineers with real factory blueprints, live assemblies, and ISO/ASME drawing portfolios.</p>
+            </div>
+
+            <!-- Software Suite Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+                <div class="p-5 rounded-2xl bg-cardDark border border-slate-800 text-center hover:border-blue-400 transition">
+                    <div class="text-blue-400 font-bold text-lg mb-1">AutoCAD</div>
+                    <span class="text-[10px] font-mono text-slate-400">2D Drafting & Schematics</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-cardDark border border-slate-800 text-center hover:border-blue-400 transition">
+                    <div class="text-blue-400 font-bold text-lg mb-1">SolidWorks</div>
+                    <span class="text-[10px] font-mono text-slate-400">Parametric & Weldments</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-cardDark border border-slate-800 text-center hover:border-blue-400 transition">
+                    <div class="text-blue-400 font-bold text-lg mb-1">CATIA V5</div>
+                    <span class="text-[10px] font-mono text-slate-400">Class-A Surface Modeling</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-cardDark border border-slate-800 text-center hover:border-blue-400 transition">
+                    <div class="text-blue-400 font-bold text-lg mb-1">Siemens NX</div>
+                    <span class="text-[10px] font-mono text-slate-400">Heavy Machinery & CAM</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-cardDark border border-slate-800 text-center hover:border-blue-400 transition">
+                    <div class="text-blue-400 font-bold text-lg mb-1">PTC Creo</div>
+                    <span class="text-[10px] font-mono text-slate-400">Direct & Mechanism Design</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-cardDark border border-slate-800 text-center hover:border-blue-400 transition">
+                    <div class="text-blue-400 font-bold text-lg mb-1">GD&T Master</div>
+                    <span class="text-[10px] font-mono text-slate-400">ASME Y14.5 Tolerances</span>
+                </div>
+            </div>
+
+            <!-- Training Course Tiers -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition shadow-xl relative flex flex-col justify-between">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 font-mono text-xs font-semibold">Tier 1 &bull; Essentials</span>
+                        <h3 class="text-xl font-bold text-white mt-4 mb-2 font-heading">Foundational Part & Sheet Metal</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">Ideal for engineering students and beginners. Learn sketch constraints, multi-body parts, sheet metal bend deduction, and parametric features.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-8 font-mono border-t border-slate-800 pt-4">
+                            <li>&check; 2D Constrained Sketching</li>
+                            <li>&check; Sheet Metal K-Factors & Bends</li>
+                            <li>&check; Standard Component Drawings</li>
+                        </ul>
+                    </div>
+                    <a href="#inquiry" onclick="fillCourse('Foundational Part & Sheet Metal Modeling')" class="block w-full py-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-center text-blue-300 font-semibold hover:bg-blue-600 hover:text-white transition">Enroll in Cohort</a>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-gradient-to-b from-blue-900/30 via-cardDark to-cardDark border border-blue-400 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-3">
+                    <div class="absolute -top-3 right-6 px-3 py-1 bg-cyan-400 text-slate-950 font-bold text-[10px] uppercase rounded-full font-mono">Top Rated</div>
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-cyan-600/20 text-cyan-300 font-mono text-xs font-semibold">Tier 2 &bull; Advanced</span>
+                        <h3 class="text-xl font-bold text-white mt-4 mb-2 font-heading">Large Assembly & Surface Design</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">Designed for mechanical professionals. Top-down assembly structuring, kinematic mechanisms, interference detection, and automotive freeform lofts.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-8 font-mono border-t border-slate-800 pt-4">
+                            <li>&check; Top-Down In-Context Modeling</li>
+                            <li>&check; Class-A Surfacing & Curvature (G2)</li>
+                            <li>&check; Dynamic Motion Analysis</li>
+                        </ul>
+                    </div>
+                    <a href="#inquiry" onclick="fillCourse('Large Assembly & Surface Design (CATIA / SolidWorks)')" class="block w-full py-3 rounded-xl bg-blue-600 text-center text-white font-semibold hover:bg-blue-500 transition shadow-lg shadow-blue-600/40">Enroll in Cohort</a>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition shadow-xl relative flex flex-col justify-between">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 font-mono text-xs font-semibold">Tier 3 &bull; Industry Metrology</span>
+                        <h3 class="text-xl font-bold text-white mt-4 mb-2 font-heading">GD&T & Reverse Engineering</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">Master 3D scan data conversion, deviation analysis, ASME Y14.5 symbols, datum reference frames, and machine shop production blueprints.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-8 font-mono border-t border-slate-800 pt-4">
+                            <li>&check; Mesh-to-CAD Surface Fitting</li>
+                            <li>&check; Complete ASME Y14.5 GD&T Specs</li>
+                            <li>&check; CNC Shop Floor Drawing Packages</li>
+                        </ul>
+                    </div>
+                    <a href="#inquiry" onclick="fillCourse('GD&T & Reverse Engineering Masterclass')" class="block w-full py-3 rounded-xl bg-blue-600/20 border border-blue-500/40 text-center text-blue-300 font-semibold hover:bg-blue-600 hover:text-white transition">Enroll in Cohort</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Batch Schedule -->
+    <section id="batches" class="py-24 border-t border-slate-800 bg-cardDark/30 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2 block font-mono">Cohort Timetable</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 font-heading text-white">Upcoming CAD Academy Batches</h2>
+                <p class="text-slate-400 text-sm">Flexible batches available for working engineers and full-time engineering students.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto overflow-x-auto rounded-3xl border border-slate-800 bg-cardDark shadow-2xl">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-dark text-xs uppercase text-cyan-400 font-mono tracking-wider border-b border-slate-800">
+                        <tr>
+                            <th class="p-5">Course Title</th>
+                            <th class="p-5">Schedule</th>
+                            <th class="p-5">Commences</th>
+                            <th class="p-5">Availability</th>
+                            <th class="p-5 text-right">Register</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
+                        <tr class="hover:bg-slate-900/60 transition">
+                            <td class="p-5 font-semibold text-white font-sans">SolidWorks & AutoCAD Mechanical Master</td>
+                            <td class="p-5">Mon-Thu &bull; Evening</td>
+                            <td class="p-5 text-blue-300">Nov 02, 2026</td>
+                            <td class="p-5"><span class="px-2.5 py-1 bg-green-500/20 text-green-400 rounded-full font-semibold">4 Seats</span></td>
+                            <td class="p-5 text-right"><a href="#inquiry" onclick="fillCourse('SolidWorks & AutoCAD Mechanical Master')" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition">Enroll</a></td>
+                        </tr>
+                        <tr class="hover:bg-slate-900/60 transition">
+                            <td class="p-5 font-semibold text-white font-sans">CATIA V5 & Siemens NX Surface Modeling</td>
+                            <td class="p-5">Sat-Sun &bull; Weekend</td>
+                            <td class="p-5 text-blue-300">Nov 08, 2026</td>
+                            <td class="p-5"><span class="px-2.5 py-1 bg-yellow-500/20 text-yellow-400 rounded-full font-semibold">Filling Fast</span></td>
+                            <td class="p-5 text-right"><a href="#inquiry" onclick="fillCourse('CATIA V5 & Siemens NX Surface Modeling')" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition">Enroll</a></td>
+                        </tr>
+                        <tr class="hover:bg-slate-900/60 transition">
+                            <td class="p-5 font-semibold text-white font-sans">ASME Y14.5 GD&T & Reverse Engineering</td>
+                            <td class="p-5">Mon-Wed &bull; Morning</td>
+                            <td class="p-5 text-blue-300">Nov 16, 2026</td>
+                            <td class="p-5"><span class="px-2.5 py-1 bg-green-500/20 text-green-400 rounded-full font-semibold">Open</span></td>
+                            <td class="p-5 text-right"><a href="#inquiry" onclick="fillCourse('ASME Y14.5 GD&T & Reverse Engineering')" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition">Enroll</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Estimate & Inquiry Form -->
+    <section id="inquiry" class="py-28 border-t border-slate-800 bg-dark relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2 block font-mono">Collaborate With Us</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 font-heading text-white">Start Your Project or Enrollment</h2>
+                <p class="text-slate-400 text-sm">Submit your specs below. Clicking submit initiates an automatic direct quote dispatch to our engineering desk.</p>
+            </div>
+
+            <form id="project-form" class="bg-cardDark p-8 md:p-12 rounded-3xl border border-slate-800 space-y-6 shadow-2xl relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase font-mono mb-2">Full Name</label>
+                        <input type="text" id="form-name" placeholder="John Doe" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase font-mono mb-2">Email Address</label>
+                        <input type="email" id="form-email" placeholder="john@company.com" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase font-mono mb-2">Primary Service / Academy Requirement</label>
+                        <select id="form-service" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition text-sm">
+                            <option>3D Optical & Laser Scanning</option>
+                            <option>Industrial 3D Printing & Rapid Prototyping</option>
+                            <option>Reverse Engineering (Mesh to Parametric CAD)</option>
+                            <option>R&D: Concept to Reality Engineering</option>
+                            <option>Dairy & Pharma Filling Automation</option>
+                            <option>CAD Academy: SolidWorks Parametric</option>
+                            <option>CAD Academy: CATIA V5 Surfacing</option>
+                            <option>CAD Academy: Siemens NX & Creo</option>
+                            <option>CAD Academy: GD&T (ASME Y14.5)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase font-mono mb-2">Project Urgency / Batch Preference</label>
+                        <select id="form-urgency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition text-sm font-mono">
+                            <option>Standard (1-2 Weeks)</option>
+                            <option>Rush / Urgent Prototype (&lt; 72 Hours)</option>
+                            <option>Upcoming Academy Batch Cohort</option>
+                            <option>Consultation & Feasibility Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase font-mono mb-2">Project Dimensions, Tolerances or Training Objectives</label>
+                    <textarea id="form-message" rows="4" placeholder="Detail your component size, material needs (e.g. SS316, ABS, PLA), scanning accuracy requirements or software goals..." required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 hover:scale-[1.01] duration-200">
+                    <span>Submit Specifications to Engineering Desk</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="py-16 border-t border-slate-800 text-sm text-slate-500 bg-cardDark/40 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div>
+                <span class="text-xl font-bold tracking-tight text-white flex items-center gap-2 mb-4 font-heading">
+                    APEX<span class="text-blue-500">MECH</span>
+                </span>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    Precision engineering solutions specializing in industrial 3D scanning, additive 3D printing prototyping, complete reverse engineering, and professional CAD education.
+                </p>
+                <p class="text-xs text-cyan-400 font-mono">engineering@apexmech.dev</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-xs uppercase font-mono tracking-wider">Engineering Services</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#scanning" class="hover:text-blue-400 transition">3D Optical Laser Scanning</a></li>
+                    <li><a href="#printing" class="hover:text-blue-400 transition">Industrial 3D Printing (FDM/SLA)</a></li>
+                    <li><a href="#services" class="hover:text-blue-400 transition">Point Cloud Reverse Engineering</a></li>
+                    <li><a href="#rnd" class="hover:text-blue-400 transition">R&D: Concept to Reality</a></li>
+                    <li><a href="#services" class="hover:text-blue-400 transition">Packaging & Sanitary Automation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-xs uppercase font-mono tracking-wider">CAD Academy</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#academy" class="hover:text-blue-400 transition">AutoCAD & SolidWorks Modules</a></li>
+                    <li><a href="#academy" class="hover:text-blue-400 transition">CATIA V5 Freeform Surfacing</a></li>
+                    <li><a href="#academy" class="hover:text-blue-400 transition">Siemens NX & PTC Creo</a></li>
+                    <li><a href="#academy" class="hover:text-blue-400 transition">ASME Y14.5 GD&T Masterclass</a></li>
+                    <li><a href="#batches" class="hover:text-blue-400 transition">Upcoming Batch Schedules</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-xs uppercase font-mono tracking-wider">Standards & Metrology</h4>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    All components, scan point clouds, and drawings comply with ASME Y14.5M, ISO 9001, and sanitary GMP directives.
+                </p>
+                <div class="inline-block px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30 text-cyan-300 text-[10px] font-mono">
+                    ISO 9001 & ASME COMPLIANT WORKFLOW
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-slate-800/80 text-center text-xs text-slate-500">
+            <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- External Script Connection -->
+    <script src="script.js"></script>
+</body>
+</html>
