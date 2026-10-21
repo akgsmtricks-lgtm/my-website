@@ -5,54 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us — ApexMech Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080a0f] text-slate-100 antialiased pt-28">
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080a0f]/95 backdrop-blur-md border-b border-slate-800">
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></a>
-            <a href="index.html" class="text-sm text-cyan-400 hover:underline">&larr; Back to Home</a>
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
+                <a href="services.html" class="text-slate-300 hover:text-cyan-400 transition">Services</a>
+                <a href="training.html" class="text-slate-300 hover:text-cyan-400 transition">Academy</a>
+                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition">Contact</a>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
         <div class="text-center">
             <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Corporate Profile</span>
-            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Engineering Precision Since Day One</h1>
+            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">About ApexMech Solutions</h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">Pioneering precision mechanical design, optical metrology, and custom automated machinery.</p>
         </div>
 
-        <section id="company-overview" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <!-- 1. Company Overview -->
+        <section id="company-overview" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-2xl font-bold text-white mb-4">Company Overview</h2>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                ApexMech delivers end-to-end mechanical engineering solutions, bridging the gap between physical hardware and digital precision. From high-resolution optical metrology to turnkey robotics, automated tooling, and mass-production DFM, we provide agile engineering expertise for mission-critical industries.
+            </p>
             <p class="text-slate-300 text-sm leading-relaxed">
-                ApexMech delivers end-to-end mechanical engineering solutions, bridging the gap between physical hardware and digital precision. From optical metrology to rapid prototyping and mass-production DFM, we provide agile engineering expertise for mission-critical industries.
+                Our design teams operate out of modern engineering workstations equipped with complete native CAD suites (SolidWorks, CATIA, Creo, NX) and calibrated optical 3D scanners capable of capturing point clouds up to ±0.010 mm accuracy.
             </p>
         </section>
 
+        <!-- 2. Mission & Vision -->
         <section id="mission-vision" class="grid md:grid-cols-2 gap-8">
-            <div class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/40 flex items-center justify-center text-blue-400 text-xl font-bold mb-4">🎯</div>
                 <h3 class="text-xl font-bold text-cyan-400 mb-3">Our Mission</h3>
-                <p class="text-slate-300 text-sm leading-relaxed">To accelerate hardware innovation by converting ideas into micron-accurate, production-ready engineering blueprints and prototypes.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">To accelerate hardware innovation by converting ideas into micron-accurate, production-ready engineering blueprints, automated mechanisms, and working prototypes with zero manufacturing delays.</p>
             </div>
-            <div class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="w-12 h-12 rounded-xl bg-cyan-600/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl font-bold mb-4">🚀</div>
                 <h3 class="text-xl font-bold text-blue-400 mb-3">Our Vision</h3>
-                <p class="text-slate-300 text-sm leading-relaxed">To be the global benchmark for digital manufacturing, reverse engineering, and advanced mechanical CAD education.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">To be the global benchmark for digital manufacturing, reverse engineering, custom industrial automation, and advanced mechanical CAD education.</p>
             </div>
         </section>
 
-        <section id="leadership" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <!-- 3. Leadership Team -->
+        <section id="leadership" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-2xl font-bold text-white mb-4">Leadership Team</h2>
-            <p class="text-slate-300 text-sm leading-relaxed">Led by senior mechanical design engineers, tooling specialists, and metrology professionals with decades of cumulative industry experience across automotive, industrial automation, and heavy manufacturing.</p>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">Led by senior mechanical design engineers, tooling specialists, and metrology professionals with decades of cumulative industry experience across automotive, industrial automation, and heavy manufacturing.</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-5 rounded-2xl bg-dark border border-slate-800">
+                    <h4 class="font-bold text-white text-base">Principal Mechanical Engineer</h4>
+                    <p class="text-xs text-cyan-400 font-mono mt-1">Machine Design & Automation</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-dark border border-slate-800">
+                    <h4 class="font-bold text-white text-base">Head of Metrology & Scanning</h4>
+                    <p class="text-xs text-blue-400 font-mono mt-1">Laser Inspection & Reverse Eng</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-dark border border-slate-800">
+                    <h4 class="font-bold text-white text-base">Director of CAD Academy</h4>
+                    <p class="text-xs text-indigo-400 font-mono mt-1">ASME Y14.5 GD&T Specialist</p>
+                </div>
+            </div>
         </section>
 
-        <section id="quality" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <!-- 4. Quality & Certifications -->
+        <section id="quality" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-2xl font-bold text-white mb-4">Quality & Certifications</h2>
-            <p class="text-slate-300 text-sm leading-relaxed">Every dimension, weldment, and drawing is governed by ASME Y14.5M GD&T protocols, ISO 9001 certified quality standards, and ISO 1101 metrology tolerances.</p>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">Every dimension, weldment, and drawing is governed by ASME Y14.5M GD&T protocols, ISO 9001 certified quality standards, and ISO 1101 metrology tolerances.</p>
+            <ul class="text-xs font-mono text-slate-300 space-y-2">
+                <li>&bull; ASME Y14.5M — Dimensioning & Tolerancing Standards</li>
+                <li>&bull; ISO 9001:2015 — Quality Management System</li>
+                <li>&bull; ISO 7200 & IS 2102 — Drawing Title Blocks & General Machining Tolerances</li>
+            </ul>
         </section>
 
-        <section id="global-presence" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <!-- 5. Global Presence -->
+        <section id="global-presence" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-2xl font-bold text-white mb-4">Global Presence</h2>
             <p class="text-slate-300 text-sm leading-relaxed">Serving OEM and Tier-1 clients globally across North America, Europe, and Asia-Pacific through secure cloud-synced CAD ecosystems and physical metrology hubs.</p>
         </section>
     </main>
+
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
+        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -5,55 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAD Training Academy — ApexMech</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080a0f] text-slate-100 antialiased pt-28">
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080a0f]/95 backdrop-blur-md border-b border-slate-800">
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
+
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></a>
-            <a href="index.html" class="text-sm text-cyan-400 hover:underline">&larr; Back to Home</a>
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
+                <a href="services.html" class="text-slate-300 hover:text-cyan-400 transition">Services</a>
+                <a href="careers.html" class="text-slate-300 hover:text-cyan-400 transition">Careers</a>
+                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition">Contact</a>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
         <div class="text-center mb-16">
             <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Industry-Led Cohorts</span>
             <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">ApexMech CAD Academy</h1>
-            <p class="text-slate-400 text-sm max-w-2xl mx-auto mt-4">Learn CAD from active mechanical design engineers using real factory blueprints, live assemblies, and GD&T drafting standards.</p>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">Learn CAD from active mechanical design engineers using real factory blueprints, live assemblies, and GD&T drafting standards.</p>
         </div>
 
-        <div class="space-y-8">
-            <section id="autocad" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-                <h2 class="text-2xl font-bold text-white mb-2">AutoCAD Mechanical Training</h2>
-                <p class="text-slate-300 text-sm">Master 2D mechanical drafting, ISO title blocks, layer management, dimension styles, and assembly schematics.</p>
+        <!-- Course Modules -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <section id="autocad" class="p-6 rounded-2xl bg-cardDark border border-slate-800">
+                <div class="text-blue-400 font-bold text-lg mb-2">AutoCAD Mechanical</div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">Master 2D mechanical drafting, ISO title blocks, layer management, dimension styles, and assembly schematics.</p>
+                <span class="text-[11px] font-mono text-cyan-400">Duration: 4 Weeks</span>
             </section>
 
-            <section id="solidworks" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-                <h2 class="text-2xl font-bold text-white mb-2">SolidWorks Parametric & Weldments</h2>
-                <p class="text-slate-300 text-sm">3D parametric modeling, sheet metal unfolds, ISO structural weldments, large assembly mating, and exploded views.</p>
+            <section id="solidworks" class="p-6 rounded-2xl bg-cardDark border border-slate-800">
+                <div class="text-blue-400 font-bold text-lg mb-2">SolidWorks Parametric</div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">3D parametric modeling, sheet metal unfolds, ISO structural weldments, large assembly mating, and exploded views.</p>
+                <span class="text-[11px] font-mono text-cyan-400">Duration: 6 Weeks</span>
             </section>
 
-            <section id="catia" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-                <h2 class="text-2xl font-bold text-white mb-2">CATIA V5 Freeform Surfacing</h2>
-                <p class="text-slate-300 text-sm">Generative shape design, Class-A curvature continuity (G0/G1/G2), and automotive body panel development.</p>
+            <section id="catia" class="p-6 rounded-2xl bg-cardDark border border-slate-800">
+                <div class="text-blue-400 font-bold text-lg mb-2">CATIA V5 Surfacing</div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">Generative shape design, Class-A curvature continuity (G0/G1/G2), and automotive body panel development.</p>
+                <span class="text-[11px] font-mono text-cyan-400">Duration: 8 Weeks</span>
             </section>
 
-            <section id="creo" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-                <h2 class="text-2xl font-bold text-white mb-2">PTC Creo Mechanism Design</h2>
-                <p class="text-slate-300 text-sm">Kinematic simulation, dynamic connection joints, mechanism analysis, and direct modeling.</p>
+            <section id="creo" class="p-6 rounded-2xl bg-cardDark border border-slate-800">
+                <div class="text-blue-400 font-bold text-lg mb-2">PTC Creo Mechanism</div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">Kinematic simulation, dynamic connection joints, mechanism analysis, and direct modeling.</p>
+                <span class="text-[11px] font-mono text-cyan-400">Duration: 6 Weeks</span>
             </section>
 
-            <section id="nx" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-                <h2 class="text-2xl font-bold text-white mb-2">Siemens NX CAD / CAM</h2>
-                <p class="text-slate-300 text-sm">Complex machinery architecture, synchronous technology, mold wizard, and multi-axis machining toolpaths.</p>
+            <section id="nx" class="p-6 rounded-2xl bg-cardDark border border-slate-800">
+                <div class="text-blue-400 font-bold text-lg mb-2">Siemens NX Heavy Machinery</div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">Complex machinery architecture, synchronous technology, mold wizard, and multi-axis machining toolpaths.</p>
+                <span class="text-[11px] font-mono text-cyan-400">Duration: 8 Weeks</span>
             </section>
 
-            <section id="all-programs" class="p-8 rounded-3xl bg-blue-950/40 border border-blue-500/40 text-center">
-                <h2 class="text-2xl font-bold text-white mb-2">Ready to Enroll in an Upcoming Batch?</h2>
-                <p class="text-slate-300 text-sm mb-6">Weekend and evening cohorts are available for engineering students and working professionals.</p>
-                <a href="index.html#inquiry" class="inline-block px-8 py-3.5 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition shadow-lg shadow-blue-600/30">Register for Cohort</a>
+            <section class="p-6 rounded-2xl bg-cardDark border border-slate-800">
+                <div class="text-blue-400 font-bold text-lg mb-2">ASME Y14.5 GD&T Master</div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">Feature control frames, datum reference frames, MMC/LMC material conditions, and tolerance stacks.</p>
+                <span class="text-[11px] font-mono text-cyan-400">Duration: 4 Weeks</span>
             </section>
         </div>
+
+        <!-- Timetable -->
+        <section id="all-programs" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+            <h2 class="text-2xl font-bold text-white mb-6">Upcoming Batch Schedule</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-dark text-xs uppercase text-cyan-400 font-mono tracking-wider border-b border-slate-800">
+                        <tr>
+                            <th class="p-4">Course Title</th>
+                            <th class="p-4">Schedule</th>
+                            <th class="p-4">Commences</th>
+                            <th class="p-4">Availability</th>
+                            <th class="p-4 text-right">Register</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
+                        <tr>
+                            <td class="p-4 font-semibold text-white font-sans">SolidWorks & AutoCAD Mechanical Master</td>
+                            <td class="p-4">Mon-Thu &bull; Evening</td>
+                            <td class="p-4 text-blue-300">Nov 02, 2026</td>
+                            <td class="p-4"><span class="px-2.5 py-1 bg-green-500/20 text-green-400 rounded-full font-semibold">4 Seats</span></td>
+                            <td class="p-4 text-right"><a href="contact.html" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition">Enroll</a></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold text-white font-sans">CATIA V5 & Siemens NX Surface Modeling</td>
+                            <td class="p-4">Sat-Sun &bull; Weekend</td>
+                            <td class="p-4 text-blue-300">Nov 08, 2026</td>
+                            <td class="p-4"><span class="px-2.5 py-1 bg-yellow-500/20 text-yellow-400 rounded-full font-semibold">Filling Fast</span></td>
+                            <td class="p-4 text-right"><a href="contact.html" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition">Enroll</a></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold text-white font-sans">ASME Y14.5 GD&T & Reverse Engineering</td>
+                            <td class="p-4">Mon-Wed &bull; Morning</td>
+                            <td class="p-4 text-blue-300">Nov 16, 2026</td>
+                            <td class="p-4"><span class="px-2.5 py-1 bg-green-500/20 text-green-400 rounded-full font-semibold">Open</span></td>
+                            <td class="p-4 text-right"><a href="contact.html" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition">Enroll</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
+
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
+        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    </footer>
 </body>
 </html>

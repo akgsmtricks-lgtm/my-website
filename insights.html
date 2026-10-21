@@ -5,47 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engineering Insights — ApexMech</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080a0f] text-slate-100 antialiased pt-28">
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080a0f]/95 backdrop-blur-md border-b border-slate-800">
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
+
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></a>
-            <a href="index.html" class="text-sm text-cyan-400 hover:underline">&larr; Back to Home</a>
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
+                <a href="services.html" class="text-slate-300 hover:text-cyan-400 transition">Services</a>
+                <a href="training.html" class="text-slate-300 hover:text-cyan-400 transition">Academy</a>
+                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition">Contact</a>
+            </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
         <div class="text-center mb-16">
             <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Knowledge Base</span>
-            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Technical Insights & Articles</h1>
+            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Engineering Insights & Resources</h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">Deep technical guides, GD&T standards breakdown, and machine shop drawing resources.</p>
         </div>
 
-        <section id="blog" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-            <h2 class="text-2xl font-bold text-white mb-4">Engineering Blog</h2>
-            <div class="space-y-4">
-                <article class="border-b border-slate-800 pb-4">
+        <section id="blog" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+            <h2 class="text-2xl font-bold text-white mb-6">Engineering Blog</h2>
+            <div class="space-y-6">
+                <article class="border-b border-slate-800 pb-6">
                     <span class="text-xs text-cyan-400 font-mono">October 2026 &bull; Reverse Engineering</span>
                     <h3 class="text-lg font-bold text-white mt-1">Understanding Mesh-to-CAD Deviation in Complex Castings</h3>
-                    <p class="text-xs text-slate-400 mt-2">How structured optical light scanning compares against traditional CMM probing for non-uniform surfaces.</p>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">How structured optical light scanning compares against traditional CMM touch probing for non-uniform turbine surfaces and legacy tooling blocks.</p>
+                </article>
+                <article class="border-b border-slate-800 pb-6">
+                    <span class="text-xs text-blue-400 font-mono">September 2026 &bull; Sheet Metal</span>
+                    <h3 class="text-lg font-bold text-white mt-1">Mastering K-Factor in Sheet Metal Bending</h3>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">How neutral axis shifting influences flat pattern DXFs across stainless steel and aluminum alloy plates on CNC press brakes.</p>
                 </article>
             </div>
         </section>
 
-        <section id="articles" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-            <h2 class="text-2xl font-bold text-white mb-2">Technical Articles</h2>
-            <p class="text-slate-300 text-sm">Deep dives into ASME Y14.5 feature control frames, K-factors for stainless steel sheet metal, and pneumatic valve sizing.</p>
+        <section id="articles" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+            <h2 class="text-xl font-bold text-white mb-3">Technical Articles</h2>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">Deep dives into ASME Y14.5 feature control frames, K-factors for stainless steel sheet metal, and pneumatic cylinder selection.</p>
         </section>
 
-        <section id="news" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-            <h2 class="text-2xl font-bold text-white mb-2">Industry News</h2>
-            <p class="text-slate-300 text-sm">The latest updates in additive manufacturing materials, generative AI CAD solvers, and optical metrology hardware.</p>
+        <section id="news" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+            <h2 class="text-xl font-bold text-white mb-3">Industry News</h2>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">The latest breakthroughs in industrial laser metrology sensors, generative topology design tools, and multi-axis CNC machining.</p>
         </section>
 
-        <section id="resources" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-            <h2 class="text-2xl font-bold text-white mb-2">Resources & Downloads</h2>
-            <p class="text-slate-300 text-sm">Download free ISO title block DWG templates, tolerance chart reference PDFs, and bend deduction cheat sheets.</p>
+        <section id="resources" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+            <h2 class="text-xl font-bold text-white mb-4">Resources & Downloads</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-2xl bg-dark border border-slate-800">
+                    <h4 class="font-bold text-white text-sm">ISO 7200 Drawing Title Block DXF</h4>
+                    <p class="text-xs text-slate-400 mt-1">Free standard drafting template for AutoCAD & SolidWorks.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-dark border border-slate-800">
+                    <h4 class="font-bold text-white text-sm">IS 2102 Machining Tolerance Chart</h4>
+                    <p class="text-xs text-slate-400 mt-1">Quick-reference medium class linear & angular tolerance sheet.</p>
+                </div>
+            </div>
         </section>
     </main>
+
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
+        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    </footer>
 </body>
 </html>

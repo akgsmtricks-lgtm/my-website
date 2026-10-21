@@ -5,13 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers — ApexMech Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080a0f] text-slate-100 antialiased pt-28">
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080a0f]/95 backdrop-blur-md border-b border-slate-800">
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
+
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></a>
-            <a href="index.html" class="text-sm text-cyan-400 hover:underline">&larr; Back to Home</a>
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
+                <a href="services.html" class="text-slate-300 hover:text-cyan-400 transition">Services</a>
+                <a href="insights.html" class="text-slate-300 hover:text-cyan-400 transition">Insights</a>
+                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition">Contact</a>
+            </div>
         </div>
     </header>
 
@@ -19,45 +47,54 @@
         <div class="text-center mb-16">
             <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Join Our Team</span>
             <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Build the Future of Engineering</h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">We are expanding our 3D scanning, automation design, and CAD instruction desks.</p>
         </div>
 
-        <section id="openings" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800 space-y-4">
-            <h2 class="text-2xl font-bold text-white mb-2">Current Openings</h2>
-            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex justify-between items-center">
+        <section id="openings" class="p-8 rounded-3xl bg-cardDark border border-slate-800 space-y-4">
+            <h2 class="text-2xl font-bold text-white mb-4">Current Openings</h2>
+            
+            <div class="p-5 rounded-2xl bg-dark border border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h3 class="font-bold text-white">Mechanical Design Engineer (SolidWorks & GD&T)</h3>
-                    <p class="text-xs text-slate-400">Full Time &bull; Design Lab</p>
+                    <h3 class="font-bold text-white text-base">Mechanical Automation Engineer (SolidWorks)</h3>
+                    <p class="text-xs text-slate-400 mt-1">Design Lab &bull; Full-Time &bull; Hyderabad, India</p>
+                    <p class="text-xs text-slate-300 mt-2">Expertise in weldments, 2D detailing, GD&T, pneumatic actuators, and robotic cell designs. 2+ years experience.</p>
                 </div>
-                <a href="contact.html" class="px-4 py-2 rounded-xl bg-blue-600 text-xs font-semibold text-white">Apply</a>
+                <a href="contact.html" class="px-5 py-2.5 rounded-xl bg-blue-600 text-xs font-semibold text-white hover:bg-blue-500 transition shrink-0">Apply Now</a>
             </div>
-            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex justify-between items-center">
+
+            <div class="p-5 rounded-2xl bg-dark border border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h3 class="font-bold text-white">Metrology & 3D Scanning Specialist</h3>
-                    <p class="text-xs text-slate-400">Full Time &bull; Optical Lab</p>
+                    <h3 class="font-bold text-white text-base">Reverse Engineering & Metrology Specialist</h3>
+                    <p class="text-xs text-slate-400 mt-1">Metrology Hub &bull; Full-Time &bull; Hyderabad, India</p>
+                    <p class="text-xs text-slate-300 mt-2">Laser optical scanning, point-cloud cleaning in Geomagic, and Class-A parametric surfacing in CATIA/NX.</p>
                 </div>
-                <a href="contact.html" class="px-4 py-2 rounded-xl bg-blue-600 text-xs font-semibold text-white">Apply</a>
+                <a href="contact.html" class="px-5 py-2.5 rounded-xl bg-blue-600 text-xs font-semibold text-white hover:bg-blue-500 transition shrink-0">Apply Now</a>
             </div>
         </section>
 
-        <section id="experienced" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <section id="experienced" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-xl font-bold text-white mb-2">Experienced Professionals</h2>
-            <p class="text-slate-300 text-sm">Lead turnkey engineering projects, mentor junior CAD engineers, and interact with global clients.</p>
+            <p class="text-slate-300 text-sm leading-relaxed">Lead turnkey mechanical projects, mentor junior CAD engineers, and coordinate DFM directly with global machine shops and clients.</p>
         </section>
 
-        <section id="graduates" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-            <h2 class="text-xl font-bold text-white mb-2">Graduate & Fresher Opportunities</h2>
-            <p class="text-slate-300 text-sm">Intensive apprenticeship programs with direct access to laser scanners, 3D printers, and industrial CAD design workflows.</p>
+        <section id="graduates" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+            <h2 class="text-xl font-bold text-white mb-2">Graduate Opportunities</h2>
+            <p class="text-slate-300 text-sm leading-relaxed">Intensive apprenticeship programs with direct access to laser scanners, 3D printers, and industrial CAD design workflows.</p>
         </section>
 
-        <section id="internships" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <section id="internships" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-xl font-bold text-white mb-2">Internships</h2>
-            <p class="text-slate-300 text-sm">3 to 6-month hands-on internships for mechanical engineering students.</p>
+            <p class="text-slate-300 text-sm leading-relaxed">3 to 6-month hands-on internships for mechanical engineering graduates aiming to master ASME standard drafting and industrial modeling.</p>
         </section>
 
-        <section id="life" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+        <section id="life" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <h2 class="text-xl font-bold text-white mb-2">Life at Our Company</h2>
-            <p class="text-slate-300 text-sm">A culture of continuous technical curiosity, prototyping freedom, and hardware innovation.</p>
+            <p class="text-slate-300 text-sm leading-relaxed">A culture of continuous technical curiosity, prototyping freedom, and genuine hardware engineering without corporate bureaucracy.</p>
         </section>
     </main>
+
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
+        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    </footer>
 </body>
 </html>

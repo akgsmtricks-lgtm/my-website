@@ -5,13 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us — ApexMech Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080a0f] text-slate-100 antialiased pt-28">
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080a0f]/95 backdrop-blur-md border-b border-slate-800">
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
+
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></a>
-            <a href="index.html" class="text-sm text-cyan-400 hover:underline">&larr; Back to Home</a>
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
+                <a href="services.html" class="text-slate-300 hover:text-cyan-400 transition">Services</a>
+                <a href="training.html" class="text-slate-300 hover:text-cyan-400 transition">Academy</a>
+                <a href="careers.html" class="text-slate-300 hover:text-cyan-400 transition">Careers</a>
+            </div>
         </div>
     </header>
 
@@ -19,29 +47,45 @@
         <div class="text-center mb-16">
             <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Get In Touch</span>
             <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Contact Engineering Desk</h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">Connect with our design office for reverse engineering RFQs, automated machine development, or CAD Academy enrollment.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-            <section id="info" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+            <section id="info" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="text-2xl mb-3">✉️</div>
                 <h2 class="text-xl font-bold text-white mb-3">Contact Information</h2>
                 <p class="text-sm text-slate-300"><strong>Direct Email:</strong></p>
-                <p class="text-xs text-cyan-400 font-mono mb-4">engineering@apexmech.dev</p>
+                <p class="text-xs text-cyan-400 font-mono mb-4 mt-1">engineering@apexmech.dev</p>
                 <p class="text-sm text-slate-300"><strong>Operating Hours:</strong></p>
-                <p class="text-xs text-slate-400 font-mono">Mon - Fri: 08:30 - 18:30 IST</p>
+                <p class="text-xs text-slate-400 font-mono mt-1">Mon - Fri: 08:30 - 18:30 IST</p>
             </section>
 
-            <section id="locations" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+            <section id="locations" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="text-2xl mb-3">📍</div>
                 <h2 class="text-xl font-bold text-white mb-3">Office Locations</h2>
                 <p class="text-sm text-slate-300 font-semibold">ApexMech Engineering Hub</p>
-                <p class="text-xs text-slate-400 leading-relaxed mt-1">Design Studio & Metrology Lab,<br>Industrial Technology Park,<br>Hyderabad, Telangana, India.</p>
+                <p class="text-xs text-slate-400 leading-relaxed mt-1">
+                    Design Studio, Automation Hub & Metrology Lab,<br>
+                    Industrial Technology Park,<br>
+                    Hyderabad, Telangana, India.
+                </p>
             </section>
 
-            <section id="enquiries" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+            <section id="enquiries" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="text-2xl mb-3">⚡</div>
                 <h2 class="text-xl font-bold text-white mb-3">General Enquiries</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">For immediate project requests, RFQs, or CAD Academy enrollment assistance, reach out directly or use our online portal.</p>
-                <a href="index.html#inquiry" class="block w-full py-2.5 rounded-xl bg-blue-600 text-center text-xs font-semibold text-white hover:bg-blue-500 transition">Go to Project Quote Form</a>
+                <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                    For CAD Academy registrations or immediate project scoping, reach out directly or submit your specs via the main quote form.
+                </p>
+                <a href="index.html#inquiry" class="block w-full py-3 rounded-xl bg-blue-600 text-center text-xs font-semibold text-white hover:bg-blue-500 transition shadow-lg shadow-blue-600/30">
+                    Go to Project Quote Form
+                </a>
             </section>
         </div>
     </main>
+
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
+        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    </footer>
 </body>
 </html>

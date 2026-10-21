@@ -5,52 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engineering Solutions — ApexMech</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080a0f',
+                        cardDark: '#0f141e',
+                        accentBlue: '#0066ff',
+                        cyanGlow: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080a0f] text-slate-100 antialiased pt-28">
-    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080a0f]/95 backdrop-blur-md border-b border-slate-800">
+<body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
+
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></a>
-            <a href="index.html" class="text-sm text-cyan-400 hover:underline">&larr; Back to Home</a>
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
+                    <span class="font-mono text-lg">A</span>
+                </div>
+                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
+                <a href="services.html" class="text-slate-300 hover:text-cyan-400 transition">Services</a>
+                <a href="projects.html" class="text-slate-300 hover:text-cyan-400 transition">Projects</a>
+                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition">Contact</a>
+            </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-12 space-y-10">
         <div class="text-center mb-16">
             <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Technical Delivery</span>
-            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Engineering Solutions</h1>
+            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Engineering Solutions Suite</h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">Specialized design, tooling optimization, and manufacturing engineering for mass production.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <section id="concept-design" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+            <section id="concept-design" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <h2 class="text-xl font-bold text-white mb-2">Concept Design</h2>
-                <p class="text-slate-300 text-sm">Conceptual layouts, patent diagrams, and preliminary mechanical feasibility simulations.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Conceptual layouts, multi-link kinematic arrangements, patent illustrations, and preliminary mechanical feasibility simulations.</p>
             </section>
-            <section id="optimization" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+
+            <section id="optimization" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <h2 class="text-xl font-bold text-white mb-2">Design Optimization</h2>
-                <p class="text-slate-300 text-sm">Topology optimization, generative design, and mass reduction without compromising safety factors.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Topology optimization, generative design, and mass reduction without compromising safety factors or structural rigidity.</p>
             </section>
-            <section id="tooling-fixture" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+
+            <section id="tooling-fixture" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <h2 class="text-xl font-bold text-white mb-2">Tooling & Fixture Design</h2>
-                <p class="text-slate-300 text-sm">Forming dies, plastic molds, thermoforming fixtures, and progressive stamping designs.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Forming dies, plastic molds, progressive stamping stations, and automated workholding fixtures.</p>
             </section>
-            <section id="jigs-fixtures" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
-                <h2 class="text-xl font-bold text-white mb-2">Jigs & Fixtures</h2>
-                <p class="text-slate-300 text-sm">Repeatable pneumatic clamp jigs, inspection checking fixtures, and robotic welding locators.</p>
+
+            <section id="jigs-fixtures" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <h2 class="text-xl font-bold text-white mb-2">Robotic Jigs & Fixtures</h2>
+                <p class="text-slate-300 text-sm leading-relaxed">Pneumatic clamping fixtures, robotic welding frames, and precision CNC inspection checking fixtures built to guarantee part repeatability.</p>
             </section>
-            <section id="sheet-metal" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+
+            <section id="sheet-metal" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <h2 class="text-xl font-bold text-white mb-2">Sheet Metal Design</h2>
-                <p class="text-slate-300 text-sm">Precise K-factors, bend deduction calculations, CNC laser cut DXFs, and enclosure press-brake unfolds.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Precise K-factors, bend deduction calculations, CNC laser cut DXFs, and enclosure press-brake unfolds for SS304 and mild steel.</p>
             </section>
-            <section id="welding-fabrication" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800">
+
+            <section id="welding-fabrication" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <h2 class="text-xl font-bold text-white mb-2">Welding & Fabrication Design</h2>
-                <p class="text-slate-300 text-sm">Structural tubing, ISO weld symbols, gusset calculations, and weldment cut lists.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Structural tubing, ISO weld symbols, gusset load calculations, and automated cut-list generation for structural base frames.</p>
             </section>
-            <section id="dfm" class="p-8 rounded-3xl bg-[#0f141e] border border-slate-800 md:col-span-2">
+
+            <section id="dfm" class="p-8 rounded-3xl bg-cardDark border border-slate-800 md:col-span-2">
                 <h2 class="text-xl font-bold text-white mb-2">Design for Manufacturing (DFM)</h2>
-                <p class="text-slate-300 text-sm">Detailed reviews to eliminate tight tolerances, prevent machining gouges, and optimize part cost.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Comprehensive manufacturing reviews to eliminate impossible tool clearances, unneeded tight tolerances, and high-cost secondary operations before releasing files to the shop floor.</p>
             </section>
         </div>
     </main>
+
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
+        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    </footer>
 </body>
 </html>

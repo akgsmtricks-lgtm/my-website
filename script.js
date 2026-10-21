@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close mobile menu on clicking any navigation link
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -143,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fill();
             });
 
-            // Draw Interconnecting Wireframe Vectors
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -167,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderEngineParticles();
     }
 
-    // 5. Project Inquiry Form Handler
+    // 5. Project Inquiry Form Submission
     const form = document.getElementById('project-form');
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -195,19 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Global functions accessible by inline HTML onclicks
-function fillCourse(courseName) {
-    const serviceSelect = document.getElementById('form-service');
-    if (!serviceSelect) return;
-    
-    for (let i = 0; i < serviceSelect.options.length; i++) {
-        if (serviceSelect.options[i].text.includes(courseName)) {
-            serviceSelect.selectedIndex = i;
-            break;
-        }
-    }
-}
-
+// Inspector Simulation View Switcher
 function setInspectorMode(mode) {
     const icon = document.getElementById('inspector-icon');
     const title = document.getElementById('inspector-title');
@@ -216,7 +202,7 @@ function setInspectorMode(mode) {
     ['mesh', 'cad', 'deviation'].forEach(m => {
         const btn = document.getElementById(`btn-${m}`);
         if (btn) {
-            btn.className = "px-5 py-2.5 rounded-xl text-xs font-semibold bg-cardDark border border-slate-800 text-slate-300 hover:border-blue-400 transition";
+            btn.className = "px-5 py-2.5 rounded-xl text-xs font-semibold bg-dark border border-slate-800 text-slate-300 hover:border-blue-400 transition";
         }
     });
 
