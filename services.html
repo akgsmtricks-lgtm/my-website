@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services — ApexMech Engineering</title>
+    <title>Engineering Services — ApexMech Solutions</title>
+    
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,6 +14,7 @@
                     colors: {
                         dark: '#080a0f',
                         cardDark: '#0f141e',
+                        cardHover: '#161d2b',
                         accentBlue: '#0066ff',
                         cyanGlow: '#00f0ff'
                     }
@@ -19,6 +22,8 @@
             }
         }
     </script>
+
+    <!-- Professional Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -26,91 +31,231 @@
 </head>
 <body class="bg-dark text-slate-100 antialiased selection:bg-blue-600 selection:text-white pt-28">
 
-    <header class="fixed top-0 left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
+    <!-- Top Engineering Status Bar -->
+    <div class="bg-blue-950/80 border-b border-blue-500/20 text-blue-300 text-[11px] font-mono py-1.5 px-6 fixed top-0 left-0 right-0 z-50 flex justify-between items-center backdrop-blur-md">
+        <div class="flex items-center space-x-4">
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>DESIGN OFFICE ONLINE</span>
+            <span class="hidden sm:inline text-slate-400">| STANDARDS: ASME Y14.5M & ISO 9001</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <span class="text-cyan-400 font-semibold tracking-wide hidden sm:inline">TECHNICAL WORKSTATIONS ACTIVE</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="fixed top-[32px] left-0 right-0 z-40 bg-dark/95 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 font-bold">
                     <span class="font-mono text-lg">A</span>
                 </div>
-                <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold font-heading text-white">APEX<span class="text-blue-500">MECH</span></span>
+                    <span class="text-[9px] uppercase tracking-widest text-slate-400 font-mono">Engineering Design Solutions</span>
+                </div>
             </a>
             <div class="flex items-center gap-6 text-sm">
-                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition">Home</a>
-                <a href="about.html" class="text-slate-300 hover:text-cyan-400 transition">About</a>
-                <a href="training.html" class="text-slate-300 hover:text-cyan-400 transition">Academy</a>
-                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition">Contact</a>
+                <a href="index.html" class="text-slate-300 hover:text-cyan-400 transition font-medium">Home</a>
+                <a href="about.html" class="text-slate-300 hover:text-cyan-400 transition font-medium">About Us</a>
+                <a href="services.html" class="text-cyan-400 font-medium">Services</a>
+                <a href="projects.html" class="text-slate-300 hover:text-cyan-400 transition font-medium">Projects</a>
+                <a href="contact.html" class="text-slate-300 hover:text-cyan-400 transition font-medium">Contact</a>
+                <a href="index.html#inquiry" class="hidden md:inline-flex px-4 py-2 text-xs font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition shadow-lg shadow-blue-600/30">Get Quote</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
-        <div class="text-center mb-16">
-            <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Our Capabilities</span>
-            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Core Engineering Services</h1>
-            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-4">From optical reverse engineering to full multi-axis robotic automation and finite element structural simulation.</p>
+    <!-- Services Header Banner -->
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-16">
+        <div class="text-center max-w-3xl mx-auto">
+            <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest block mb-2">Our Engineering Capabilities</span>
+            <h1 class="text-4xl md:text-6xl font-bold font-heading text-white">Complete Mechanical CAD & Design Services</h1>
+            <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+                We deliver accurate, workshop-ready mechanical drafting, 3D modeling, legacy conversions, and complete PLM execution customized for Indian industries and global engineering standards.
+            </p>
         </div>
 
-        <div class="space-y-8">
-            <section id="mech-design" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">⚙️</div>
-                <h2 class="text-2xl font-bold text-white mb-3">1. Mechanical Design Engineering</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">Complete machine architecture, structural frame design, kinematic links, and mechanism engineering tailored for industrial scale and reliability.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Deliverables: Assembly GA drawings, kinematic timing charts, component calculations.</div>
-            </section>
+        <!-- 7 Main Engineering Service Clusters -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <section id="drafting" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">📐</div>
-                <h2 class="text-2xl font-bold text-white mb-3">2. 2D Drafting & Detailing</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">Shop floor-ready fabrication drawings, title blocks adhering to ISO 7200, datum schemes, fit classes (H7/p6, H7/g6), and comprehensive bills of materials (BOM).</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Standards: ASME Y14.5M, ISO 1101, IS 2102 Medium Tolerances.</div>
-            </section>
+            <!-- Card 1: CAD Conversion -->
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-bold mb-6">
+                        🔄
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 font-heading">CAD Conversion</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                        Accurate conversion of old paper prints, PDFs, hand drawings, and rough sketches into native parametric CAD files with proper layers and dimensions.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2.5 font-mono mb-8 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> 2D to 3D CAD Conversion</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Accurate 2D Drafting Layouts</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Image to CAD Vectorization</li>
+                    </ul>
+                </div>
+                <a href="index.html#inquiry" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
+                    <span>Explore Other Services</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
 
-            <section id="modeling" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">🖥️</div>
-                <h2 class="text-2xl font-bold text-white mb-3">3. 3D CAD Modeling</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">Parametric feature tree parts, large assemblies exceeding 10,000 components, weldment structural frames, and sheet metal unfolds.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Native Software: SolidWorks, CATIA V5, Siemens NX, PTC Creo.</div>
-            </section>
+            <!-- Card 2: CAD Drafting -->
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-600/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl font-bold mb-6">
+                        📐
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 font-heading">CAD Drafting</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                        Shop-floor ready production blueprints, general arrangement drawings, and assembly layouts drafted with standard GD&T tolerances and title blocks.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2.5 font-mono mb-8 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> AutoCAD 2D / 3D Layouts</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Assembly Drawings with BOM</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Fabrication & Weldment Drawings</li>
+                    </ul>
+                </div>
+                <a href="index.html#inquiry" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
+                    <span>Explore Other Services</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
 
-            <section id="product-design" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">💡</div>
-                <h2 class="text-2xl font-bold text-white mb-3">4. Product Design & Development</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">From initial ergonomics and industrial styling to pilot production, tooling validation, and enclosure integration.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Workflow: Concept Sketches &rarr; 3D Solid &rarr; FEA Stress Sim &rarr; 3D Printed Prototyping.</div>
-            </section>
+            <!-- Card 3: 3D Modeling -->
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl font-bold mb-6">
+                        🖥️
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 font-heading">3D Modeling</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                        High-quality parametric solid modeling, surface construction, and rapid prototyping assets created for functional machinery, printing, and digital simulations.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2.5 font-mono mb-8 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Low Poly Models</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> 3D Printable Models (STL/STEP)</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> 3D Game & AR/VR Modeling</li>
+                    </ul>
+                </div>
+                <a href="index.html#inquiry" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
+                    <span>Explore Other Services</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
 
-            <section id="reverse-engineering" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">📡</div>
-                <h2 class="text-2xl font-bold text-white mb-3">5. Reverse Engineering</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">High-accuracy scan-to-CAD workflows. Conversion of raw STL/OBJ point clouds into native parametric SolidWorks, STEP, and IGES solids.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Accuracy: ±0.010 mm with complete color deviation verification heatmaps.</div>
-            </section>
+            <!-- Card 4: 3D Rendering -->
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-bold mb-6">
+                        ✨
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 font-heading">3D Rendering</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                        High-resolution photorealistic imagery, studio lighting visuals, and marketing cutaways generated directly from your engineering CAD models.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2.5 font-mono mb-8 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> 3D CAD Drafting & Staging</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> SolidWorks 3D Visuals</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Photorealistic 3D Rendering</li>
+                    </ul>
+                </div>
+                <a href="index.html#inquiry" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
+                    <span>Explore Other Services</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
 
-            <section id="fea-simulation" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">🔬</div>
-                <h2 class="text-2xl font-bold text-white mb-3">6. FEA & Simulation</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">Static, dynamic, thermal, and modal analysis to identify stress concentrations, minimize mass, and ensure safety factor compliance.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Scope: Von Mises stress, displacement, factor of safety, and frequency harmonic response.</div>
-            </section>
+            <!-- Card 5: Reverse Engineering -->
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-600/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl font-bold mb-6">
+                        📡
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 font-heading">Reverse Engineering</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                        Recreating exact, fully editable parametric solids and manufacturing drawings from laser scan point clouds, physical samples, and worn machine components.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2.5 font-mono mb-8 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Component Benchmarking</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> 2D Drafting from Physical Parts</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Drawing & Solid Modeling</li>
+                    </ul>
+                </div>
+                <a href="index.html#inquiry" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
+                    <span>Explore Other Services</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
 
-            <section id="automation-systems" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">🤖</div>
-                <h2 class="text-2xl font-bold text-white mb-3">7. Industrial Automation Systems</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">Turnkey Cartesian pick-and-place gantries, motorized indexing tables, pneumatic transfer links, and automated material handling systems.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Components: Servo linear actuators, pneumatic rotary actuators, safety interlocks.</div>
-            </section>
+            <!-- Card 6: PLM Implementation -->
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 hover:border-blue-500/60 transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl font-bold mb-6">
+                        ⚙️
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 font-heading">PLM Implementation</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                        End-to-end Product Lifecycle Management services to organize engineering BOMs, manage design revisions, and ensure proper data flow across factories.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2.5 font-mono mb-8 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> PLM Customization</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> PLM Data Migration</li>
+                        <li class="flex items-center gap-2"><span class="text-cyan-400">&bull;</span> Enterprise PLM Strategy</li>
+                    </ul>
+                </div>
+                <a href="index.html#inquiry" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
+                    <span>Explore Other Services</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
 
-            <section id="cad-automation" class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-                <div class="text-3xl mb-3">⚡</div>
-                <h2 class="text-2xl font-bold text-white mb-3">8. CAD Automation</h2>
-                <p class="text-slate-300 text-sm leading-relaxed mb-4">Custom API macros, SolidWorks/CATIA automation scripts, design tables, and automated drawing sheet generation.</p>
-                <div class="text-xs font-mono text-cyan-400">&bull; Efficiency: Up to 70% reduction in repetitive parametric drafting tasks.</div>
-            </section>
+            <!-- Card 7: Other Specialized Mechanical Services (Span 3 on Desktop) -->
+            <div class="p-8 rounded-3xl bg-gradient-to-b from-blue-900/20 via-cardDark to-cardDark border border-blue-500/50 md:col-span-2 lg:col-span-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <div class="max-w-3xl">
+                    <div class="inline-block px-3 py-1 rounded-full bg-blue-600/20 text-cyan-300 font-mono text-xs mb-3">Additional Capabilities</div>
+                    <h2 class="text-2xl font-bold text-white mb-2 font-heading">Other Specialized Services</h2>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+                        From basic conceptual sketches to finite element structural simulations, we support every phase of industrial equipment, sheet metal enclosures, and mass manufacturing.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-slate-200">
+                        <div class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Product Design and Development</div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Finite Element Analysis (FEA) Stress Simulation</div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Sheet Metal K-Factor & Flat Layouts</div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Jigs, Fixtures & Tooling Design</div>
+                    </div>
+                </div>
+                <div class="shrink-0 w-full md:w-auto">
+                    <a href="index.html#inquiry" class="block w-full md:w-auto px-8 py-4 rounded-xl bg-blue-600 text-white text-center font-semibold hover:bg-blue-500 transition shadow-xl shadow-blue-600/30">
+                        Explore All Mechanical Services &rarr;
+                    </a>
+                </div>
+            </div>
+
         </div>
+
+        <!-- Direct Consultation CTA Section -->
+        <section class="p-8 md:p-12 rounded-3xl bg-cardDark border border-slate-800 text-center relative overflow-hidden">
+            <div class="max-w-2xl mx-auto space-y-4">
+                <h3 class="text-2xl md:text-3xl font-bold text-white font-heading">Looking for a Custom Engineering Solution?</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Send us your component samples, 2D PDF blueprints, or design specifications. Our mechanical team in Hyderabad will review and revert with feasibility and quotation.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="index.html#inquiry" class="px-8 py-3.5 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500 transition">Request Free Project Estimate</a>
+                    <a href="contact.html" class="px-8 py-3.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold hover:text-white transition">Contact Design Desk</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center">
-        <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+    <!-- Professional Footer -->
+    <footer class="py-12 border-t border-slate-800 text-xs text-slate-500 bg-dark text-center mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <p>&copy; 2026 APEXMECH Engineering Solutions. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

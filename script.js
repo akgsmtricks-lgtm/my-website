@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Navbar Toggle Logic
+    // 1. Mobile Menu Drawer Navigation
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Interactive 3D Card Tilt Physics
+    // 2. Interactive 3D Card Physics
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPos = window.scrollY + window.innerHeight;
         const targetSection = document.querySelector('section');
         if (!targetSection) return;
-        
+
         const triggerPos = targetSection.offsetTop + 180;
         if (scrollPos > triggerPos && !hasCounted) {
             hasCounted = true;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const target = +counter.getAttribute('data-target');
                 let count = 0;
                 const step = Math.max(1, Math.floor(target / 45));
-                
+
                 const updateCounter = () => {
                     count += step;
                     if (count < target) {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Particle & Live HUD Coordinates Background
+    // 4. Particle Background & Live HUD Coordinates
     const canvas = document.getElementById('particle-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderEngineParticles();
     }
 
-    // 5. Project Inquiry Form Submission
+    // 5. Quote Inquiry Form Dispatch
     const form = document.getElementById('project-form');
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -191,14 +191,17 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
         });
     }
+
+    // 6. Check and Trigger Automated Festival Greeting
+    checkFestivalGreeting();
 });
 
-// Inspector Simulation View Switcher
+// Viewport Switcher for Scan Inspector Simulator
 function setInspectorMode(mode) {
     const icon = document.getElementById('inspector-icon');
     const title = document.getElementById('inspector-title');
     const desc = document.getElementById('inspector-desc');
-    
+
     ['mesh', 'cad', 'deviation'].forEach(m => {
         const btn = document.getElementById(`btn-${m}`);
         if (btn) {
@@ -223,5 +226,166 @@ function setInspectorMode(mode) {
         if (icon) icon.innerText = "🎯";
         if (title) title.innerText = "Color Deviation Metrology Heatmap";
         if (desc) desc.innerText = "Nominal CAD vs. Manufactured Part • Max Deviation: +0.008 mm / -0.004 mm";
+    }
+}
+
+// 7. Automated Indian Festival & Govt Holiday Engine (Compact Animated Background)
+let animReqId = null;
+
+function checkFestivalGreeting() {
+    if (sessionStorage.getItem('dismissed_festival_banner') === 'true') {
+        return;
+    }
+
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    // Universal Fixed Solar & National Holidays
+    const fixedHolidays = [
+        { name: "New Year's Day", icon: "✨", theme: "gold", month: 0, day: 1, msg: "Team ApexMech wishes you a prosperous, innovative, and joyful New Year!" },
+        { name: "Makar Sankranti & Pongal", icon: "🪁", theme: "harvest", month: 0, day: 14, msg: "Wishing you and your family abundant happiness, prosperity, and success this Makar Sankranti!" },
+        { name: "Republic Day", icon: "🇮🇳", theme: "tricolor", month: 0, day: 26, msg: "Saluting Indian engineering ingenuity, unity, and progress. Happy Republic Day!" },
+        { name: "Dr. B.R. Ambedkar Jayanti", icon: "⚖️", theme: "blue", month: 3, day: 14, msg: "Honoring the legacy of Dr. B.R. Ambedkar and the principles of equality, knowledge, and integrity." },
+        { name: "May Day / Workers' Day", icon: "🛠️", theme: "blue", month: 4, day: 1, msg: "Saluting the dedication and skill of the engineers and craftsmen building our future!" },
+        { name: "Telangana Formation Day", icon: "🏛️", theme: "gold", month: 5, day: 2, msg: "Happy Telangana Formation Day! Proud to engineer and innovate from Hyderabad." },
+        { name: "Independence Day", icon: "🇮🇳", theme: "tricolor", month: 7, day: 15, msg: "Celebrating freedom, sovereign innovation, and nation-building engineering. Happy Independence Day!" },
+        { name: "Mahatma Gandhi Jayanti", icon: "👓", theme: "tricolor", month: 9, day: 2, msg: "Remembering the Father of the Nation and his eternal ideals of truth, peace, and simplicity." },
+        { name: "Christmas Day", icon: "🎄", theme: "festive-red", month: 11, day: 25, msg: "Season's greetings! Wishing you a Merry Christmas and continuous success in the coming year." }
+    ];
+
+    // Multi-Year Lunar / Tithi-based Calendar
+    const lunarHolidaysByYear = {
+        2026: [
+            { name: "Maha Shivaratri", icon: "🕉️", theme: "divine-blue", month: 1, day: 15, msg: "Wishing you peace, determination, and divine blessings on Maha Shivaratri." },
+            { name: "Holi", icon: "🎨", theme: "holi-color", month: 2, day: 3, msg: "May your journey be filled with vibrant happiness, colors, and creative breakthroughs. Happy Holi!" },
+            { name: "Ugadi / Gudi Padwa", icon: "🌿", theme: "green-gold", month: 2, day: 19, msg: "Wishing you a bountiful, joyful, and successful Telugu New Year! Happy Ugadi." },
+            { name: "Eid-ul-Fitr", icon: "🌙", theme: "islamic-green", month: 2, day: 21, msg: "May this blessed occasion bring harmony, good health, and success. Eid Mubarak!" },
+            { name: "Sri Rama Navami", icon: "🏹", theme: "gold", month: 2, day: 26, msg: "Wishing you strength, wisdom, and righteousness on the auspicious occasion of Sri Rama Navami." },
+            { name: "Vinayaka Chavithi (Ganesh Chaturthi)", icon: "🐘", theme: "ganesh-orange", month: 8, day: 14, msg: "May Lord Ganesha eliminate every obstacle and illuminate your ventures with prosperity!" },
+            { name: "Vijaya Dashami (Dussehra)", icon: "🏹", theme: "dussehra-gold", month: 9, day: 20, msg: "Celebrating the triumph of wisdom, truth, and perseverance. Happy Dussehra from ApexMech!" },
+            { name: "Deepavali (Diwali)", icon: "🪔", theme: "diwali-glow", month: 10, day: 8, msg: "Wishing you and your family a luminous, sparkling, and prosperous Diwali! Warm wishes from Team ApexMech." }
+        ],
+        2027: [
+            { name: "Maha Shivaratri", icon: "🕉️", theme: "divine-blue", month: 2, day: 6, msg: "Wishing you peace, determination, and divine blessings on Maha Shivaratri." },
+            { name: "Holi", icon: "🎨", theme: "holi-color", month: 2, day: 22, msg: "May your journey be filled with vibrant happiness and colors. Happy Holi!" },
+            { name: "Ugadi / Gudi Padwa", icon: "🌿", theme: "green-gold", month: 3, day: 7, msg: "Wishing you a fruitful, joyous, and successful Telugu New Year! Happy Ugadi." },
+            { name: "Eid-ul-Fitr", icon: "🌙", theme: "islamic-green", month: 2, day: 10, msg: "May this blessed occasion bring harmony, peace, and health. Eid Mubarak!" },
+            { name: "Vinayaka Chavithi (Ganesh Chaturthi)", icon: "🐘", theme: "ganesh-orange", month: 8, day: 4, msg: "May Lord Ganesha bless your path with wisdom and achievement!" },
+            { name: "Vijaya Dashami (Dussehra)", icon: "🏹", theme: "dussehra-gold", month: 9, day: 10, msg: "Celebrating the victory of excellence and truth. Happy Dussehra!" },
+            { name: "Deepavali (Diwali)", icon: "🪔", theme: "diwali-glow", month: 9, day: 29, msg: "Wishing you and your family a luminous and prosperous Diwali! Greetings from ApexMech." }
+        ]
+    };
+
+    const activeHolidays = [...fixedHolidays, ...(lunarHolidaysByYear[currentYear] || [])];
+    const oneDayMS = 24 * 60 * 60 * 1000;
+
+    for (const fest of activeHolidays) {
+        const festDate = new Date(currentYear, fest.month, fest.day, 0, 0, 0);
+        const diffDays = (today - festDate) / oneDayMS;
+
+        // Active range: 1 day before (-1.0) through 1 day after (+1.99)
+        if (diffDays >= -1.0 && diffDays <= 1.99) {
+            setupFestiveTheme(fest);
+            break;
+        }
+    }
+}
+
+// Injects the festive text, custom background gradient, and particle physics
+function setupFestiveTheme(fest) {
+    const banner = document.getElementById('festival-banner');
+    const iconEl = document.getElementById('festival-icon');
+    const titleEl = document.getElementById('festival-title');
+    const msgEl = document.getElementById('festival-message');
+    const bgEl = document.getElementById('festival-bg');
+
+    if (!banner || !iconEl || !titleEl || !msgEl || !bgEl) return;
+
+    iconEl.innerText = fest.icon;
+    titleEl.innerText = `Happy ${fest.name}!`;
+    msgEl.innerText = fest.msg;
+
+    // Themed background gradient
+    if (fest.theme === 'diwali-glow') {
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#2a1303] via-[#1a0c02] to-[#0a0502] z-0";
+        startFestiveAnimation('sparks');
+    } else if (fest.theme === 'tricolor') {
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#122214] via-[#0b111a] to-[#2b1604] z-0";
+        startFestiveAnimation('confetti');
+    } else if (fest.theme === 'holi-color') {
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#26071a] via-[#130721] to-[#061521] z-0";
+        startFestiveAnimation('splash');
+    } else if (fest.theme === 'ganesh-orange' || fest.theme === 'dussehra-gold' || fest.theme === 'harvest') {
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#2b1704] via-[#160d03] to-[#0b0802] z-0";
+        startFestiveAnimation('petals');
+    } else {
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#06162e] via-[#09101d] to-[#040811] z-0";
+        startFestiveAnimation('stars');
+    }
+
+    banner.classList.remove('hidden');
+}
+
+// Particle Animation behind the text
+function startFestiveAnimation(animType) {
+    const canvas = document.getElementById('festival-anim-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.parentElement.offsetWidth || 340;
+    canvas.height = canvas.parentElement.offsetHeight || 180;
+
+    if (animReqId) cancelAnimationFrame(animReqId);
+
+    const particles = [];
+    const colors = animType === 'confetti'
+        ? ['#ff9933', '#ffffff', '#138808', '#00f0ff']
+        : animType === 'sparks'
+        ? ['#fbbf24', '#f59e0b', '#f97316', '#fff7ed']
+        : animType === 'splash'
+        ? ['#ec4899', '#8b5cf6', '#eab308', '#06b6d4']
+        : ['#38bdf8', '#fbbf24', '#a78bfa', '#ffffff'];
+
+    for (let i = 0; i < 28; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2.5 + 1,
+            speedY: Math.random() * 0.9 + 0.3,
+            speedX: (Math.random() - 0.5) * 0.6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: Math.random() * 0.7 + 0.3
+        });
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.y -= p.speedY;
+            p.x += p.speedX;
+
+            if (p.y < 0) {
+                p.y = canvas.height;
+                p.x = Math.random() * canvas.width;
+            }
+
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        });
+        animReqId = requestAnimationFrame(render);
+    }
+    render();
+}
+
+function dismissFestivalBanner() {
+    const banner = document.getElementById('festival-banner');
+    if (banner) {
+        banner.classList.add('hidden');
+        sessionStorage.setItem('dismissed_festival_banner', 'true');
+        if (animReqId) cancelAnimationFrame(animReqId);
     }
 }
