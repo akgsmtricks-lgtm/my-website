@@ -229,7 +229,7 @@ function setInspectorMode(mode) {
     }
 }
 
-// 7. Automated Indian Festival & Govt Holiday Engine (Compact Animated Background)
+// 7. Automated Indian Festival & Govt Holiday Engine with Dynamic Artwork & Particle Canvas
 let animReqId = null;
 
 function checkFestivalGreeting() {
@@ -240,7 +240,7 @@ function checkFestivalGreeting() {
     const today = new Date();
     const currentYear = today.getFullYear();
 
-    // Universal Fixed Solar & National Holidays
+    // Universal Fixed Solar & National Holidays (Runs automatically every single year)
     const fixedHolidays = [
         { name: "New Year's Day", icon: "✨", theme: "gold", month: 0, day: 1, msg: "Team ApexMech wishes you a prosperous, innovative, and joyful New Year!" },
         { name: "Makar Sankranti & Pongal", icon: "🪁", theme: "harvest", month: 0, day: 14, msg: "Wishing you and your family abundant happiness, prosperity, and success this Makar Sankranti!" },
@@ -253,7 +253,7 @@ function checkFestivalGreeting() {
         { name: "Christmas Day", icon: "🎄", theme: "festive-red", month: 11, day: 25, msg: "Season's greetings! Wishing you a Merry Christmas and continuous success in the coming year." }
     ];
 
-    // Multi-Year Lunar / Tithi-based Calendar
+    // Multi-Year Lunar / Tithi-based Calendar Definitions
     const lunarHolidaysByYear = {
         2026: [
             { name: "Maha Shivaratri", icon: "🕉️", theme: "divine-blue", month: 1, day: 15, msg: "Wishing you peace, determination, and divine blessings on Maha Shivaratri." },
@@ -276,6 +276,7 @@ function checkFestivalGreeting() {
         ]
     };
 
+    // Combine universal fixed events with year-specific calendar
     const activeHolidays = [...fixedHolidays, ...(lunarHolidaysByYear[currentYear] || [])];
     const oneDayMS = 24 * 60 * 60 * 1000;
 
@@ -283,7 +284,7 @@ function checkFestivalGreeting() {
         const festDate = new Date(currentYear, fest.month, fest.day, 0, 0, 0);
         const diffDays = (today - festDate) / oneDayMS;
 
-        // Active range: 1 day before (-1.0) through 1 day after (+1.99)
+        // Condition: Exactly 1 day before (-1.0) through 1 day after (+1.99)
         if (diffDays >= -1.0 && diffDays <= 1.99) {
             setupFestiveTheme(fest);
             break;
@@ -291,76 +292,114 @@ function checkFestivalGreeting() {
     }
 }
 
-// Injects the festive text, custom background gradient, and particle physics
+// Injects custom SVG vector artwork, animated color gradients, and particle flows
 function setupFestiveTheme(fest) {
     const banner = document.getElementById('festival-banner');
     const iconEl = document.getElementById('festival-icon');
     const titleEl = document.getElementById('festival-title');
     const msgEl = document.getElementById('festival-message');
     const bgEl = document.getElementById('festival-bg');
+    const headerSvg = document.getElementById('festival-svg-header');
 
-    if (!banner || !iconEl || !titleEl || !msgEl || !bgEl) return;
+    if (!banner || !iconEl || !titleEl || !msgEl || !bgEl || !headerSvg) return;
 
     iconEl.innerText = fest.icon;
     titleEl.innerText = `Happy ${fest.name}!`;
     msgEl.innerText = fest.msg;
 
-    // Themed background gradient
+    // Theme Graphics & Gradients
     if (fest.theme === 'diwali-glow') {
-        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#2a1303] via-[#1a0c02] to-[#0a0502] z-0";
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-amber-950 via-slate-950 to-orange-950 z-0";
+        headerSvg.innerHTML = `
+            <svg class="w-full h-full" viewBox="0 0 400 120" fill="none">
+                <radialGradient id="diwaliGlow" cx="50%" cy="80%" r="65%">
+                    <stop offset="0%" stop-color="#ff9900" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#ff6600" stop-opacity="0"/>
+                </radialGradient>
+                <rect width="400" height="120" fill="url(#diwaliGlow)"/>
+                <circle cx="200" cy="85" r="45" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 2"/>
+                <circle cx="200" cy="85" r="30" stroke="#fbbf24" stroke-width="1.5"/>
+                <path d="M 175 85 Q 200 106 225 85 Z" fill="#b45309" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M 200 58 Q 207 72 200 85 Q 193 72 200 58 Z" fill="#fbbf24" class="animate-pulse"/>
+                <circle cx="200" cy="74" r="3.5" fill="#ffffff"/>
+            </svg>`;
         startFestiveAnimation('sparks');
     } else if (fest.theme === 'tricolor') {
-        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#122214] via-[#0b111a] to-[#2b1604] z-0";
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#101c10] via-slate-950 to-[#271506] z-0";
+        headerSvg.innerHTML = `
+            <svg class="w-full h-full" viewBox="0 0 400 120" fill="none">
+                <rect x="0" y="20" width="400" height="25" fill="#ff9933" fill-opacity="0.25"/>
+                <rect x="0" y="45" width="400" height="25" fill="#ffffff" fill-opacity="0.15"/>
+                <rect x="0" y="70" width="400" height="25" fill="#138808" fill-opacity="0.25"/>
+                <circle cx="200" cy="57" r="16" stroke="#0080ff" stroke-width="1.5"/>
+                <circle cx="200" cy="57" r="2.5" fill="#0080ff"/>
+            </svg>`;
         startFestiveAnimation('confetti');
     } else if (fest.theme === 'holi-color') {
-        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#26071a] via-[#130721] to-[#061521] z-0";
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-pink-950 via-slate-950 to-purple-950 z-0";
+        headerSvg.innerHTML = `
+            <svg class="w-full h-full" viewBox="0 0 400 120" fill="none">
+                <circle cx="90" cy="60" r="45" fill="#ec4899" fill-opacity="0.3" class="filter blur-xl"/>
+                <circle cx="200" cy="50" r="50" fill="#eab308" fill-opacity="0.3" class="filter blur-xl"/>
+                <circle cx="310" cy="60" r="45" fill="#06b6d4" fill-opacity="0.3" class="filter blur-xl"/>
+                <text x="200" y="68" fill="#f43f5e" font-size="28" text-anchor="middle" font-weight="bold" letter-spacing="4">FESTIVAL OF COLORS</text>
+            </svg>`;
         startFestiveAnimation('splash');
     } else if (fest.theme === 'ganesh-orange' || fest.theme === 'dussehra-gold' || fest.theme === 'harvest') {
-        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#2b1704] via-[#160d03] to-[#0b0802] z-0";
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-amber-950 via-slate-950 to-yellow-950 z-0";
+        headerSvg.innerHTML = `
+            <svg class="w-full h-full" viewBox="0 0 400 120" fill="none">
+                <circle cx="200" cy="60" r="40" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 3"/>
+                <path d="M 160 60 Q 200 20 240 60 Q 200 100 160 60 Z" stroke="#eab308" stroke-width="2" fill="#f59e0b" fill-opacity="0.1"/>
+            </svg>`;
         startFestiveAnimation('petals');
     } else {
-        bgEl.className = "absolute inset-0 bg-gradient-to-br from-[#06162e] via-[#09101d] to-[#040811] z-0";
+        bgEl.className = "absolute inset-0 bg-gradient-to-br from-blue-950 via-slate-950 to-cyan-950 z-0";
+        headerSvg.innerHTML = `
+            <svg class="w-full h-full" viewBox="0 0 400 120" fill="none">
+                <path d="M 40 60 Q 200 10 360 60 Q 200 110 40 60 Z" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="4 2"/>
+            </svg>`;
         startFestiveAnimation('stars');
     }
 
     banner.classList.remove('hidden');
 }
 
-// Particle Animation behind the text
+// Particle Physics Simulation Canvas
 function startFestiveAnimation(animType) {
     const canvas = document.getElementById('festival-anim-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     canvas.width = canvas.parentElement.offsetWidth || 340;
-    canvas.height = canvas.parentElement.offsetHeight || 180;
+    canvas.height = canvas.parentElement.offsetHeight || 300;
 
     if (animReqId) cancelAnimationFrame(animReqId);
 
     const particles = [];
-    const colors = animType === 'confetti'
-        ? ['#ff9933', '#ffffff', '#138808', '#00f0ff']
-        : animType === 'sparks'
-        ? ['#fbbf24', '#f59e0b', '#f97316', '#fff7ed']
+    const colors = animType === 'confetti' 
+        ? ['#ff9933', '#ffffff', '#138808', '#00f0ff'] 
+        : animType === 'sparks' 
+        ? ['#fbbf24', '#f59e0b', '#f97316', '#ffedd5'] 
         : animType === 'splash'
         ? ['#ec4899', '#8b5cf6', '#eab308', '#06b6d4']
         : ['#38bdf8', '#fbbf24', '#a78bfa', '#ffffff'];
 
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 35; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 2.5 + 1,
-            speedY: Math.random() * 0.9 + 0.3,
-            speedX: (Math.random() - 0.5) * 0.6,
+            size: Math.random() * 3 + 1,
+            speedY: Math.random() * 1.2 + 0.3,
+            speedX: (Math.random() - 0.5) * 0.8,
             color: colors[Math.floor(Math.random() * colors.length)],
-            alpha: Math.random() * 0.7 + 0.3
+            alpha: Math.random() * 0.8 + 0.2
         });
     }
 
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles.forEach(p => {
-            p.y -= p.speedY;
+            p.y -= p.speedY; // floats upwards like luminous sparks
             p.x += p.speedX;
 
             if (p.y < 0) {
